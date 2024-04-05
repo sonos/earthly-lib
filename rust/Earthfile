@@ -56,7 +56,7 @@ CARGO:
     IF [ "$EARTHLY_KEEP_FINGERPRINTS" = "false" ]
        DO +REMOVE_SOURCE_FINGERPRINTS
     END
-    RUN --mount=$EARTHLY_RUST_CARGO_HOME_CACHE --mount=$EARTHLY_RUST_TARGET_CACHE \
+    RUN --ssh --mount=$EARTHLY_RUST_CARGO_HOME_CACHE --mount=$EARTHLY_RUST_TARGET_CACHE \
       set -e; \
       cargo $args; \
       cargo sweep -r -t $EARTHLY_SWEEP_DAYS; \
